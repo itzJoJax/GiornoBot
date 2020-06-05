@@ -29,7 +29,11 @@ let ops = {
 
 bot.on('ready', () =>{
     console.log('Giorno GIovanna has joined the battle!');
-    bot.user.setActivity('by itzJoJax#8445');
+    bot.user.setActivity('by itzJoJax#8445',{
+        status: "online",
+        type: "STREAMING",
+        url: 'https://www.twitch.tv/giornogiovannabot'
+    });
 })
 
 bot.on('guildMemberAdd', member =>{
