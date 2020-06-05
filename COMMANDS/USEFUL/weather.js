@@ -22,6 +22,7 @@ module.exports = async (client, message, args) =>{
         .addField('Wind', current.winddisplay, true)
         .addField(`Feels Like`, `${current.feelslike}°`, true)
         .addField(`Humidity`, `${current.humidity}%`, true)
+        .setFooter('created by itzjojax')
 
         message.channel.send(weatherinfo)
     })

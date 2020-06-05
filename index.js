@@ -1,8 +1,9 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client(); 
 const ping = require('minecraft-server-util');
+require('dotenv').config()
 
-const token = 'NzExODM0MDg1NzM1MDA2MjI5.XsIz2A.haDWiS1LvpkSbx6Sh6QoGs1_S6Q';
+const token = process.env.TOKEN;
 
 const PREFIX = 'g-';
 
@@ -124,11 +125,16 @@ bot.on('message', message=>{
         break;
 
         case 'serverinfo':{
+            var gChannels = message.guild.channels;
+            console.log(gChannels.guild);
             const serverinfo = new Discord.MessageEmbed()
             .setTitle('Server Info')
-            .addField('Founder', message.guild.owner, true)
-            .addField('Members', message.guild.memberCount, true)
-            .addField('Server Name', message.guild.name, true)
+            .addField(':crown:Founder', message.guild.owner, true)
+            .addField(':busts_in_silhouette:Members', message.guild.memberCount, true)
+            .addField(':boom:Server Name', message.guild.name, true)
+            .addField(':id:Server ID', message.guild.id, true)
+            .addField('Channels', gChannels, true)
+            .setThumbnail(message.guild.iconURL())
             .setColor(0x3F0477)
             .setFooter('created by itzjojax')
             message.channel.send(serverinfo)

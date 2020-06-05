@@ -4,8 +4,6 @@ bot.on('message', message=>{
 
     let args = message.content.substring(PREFIX.length).split(" ");
 
-    
-
     const userinfo = new Discord.MessageEmbed()
         .setTitle('User Information')
         .addField('User Name', message.author.username, true)
