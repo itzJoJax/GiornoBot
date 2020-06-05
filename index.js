@@ -20,6 +20,7 @@ const leave = require('./COMMANDS/VOICE_CHAT/VCleave.js')
 const meme = require('./COMMANDS/FUN/meme.js') 
 const dog = require('./COMMANDS/FUN/dog.js')
 const cat = require('./COMMANDS/FUN/cat.js')
+const weather = require('./COMMANDS/USEFUL/weather.js')
 
 let ops = {
     ownerID: ownerID,
@@ -36,21 +37,22 @@ bot.on('ready', () =>{
     });
 })
 
-bot.on('guildMemberAdd', member =>{
+bot.on('guildMemberAdd', message =>{
 
-    // console.log(member);
-    const channel = member.guild.channels.cache.find(channel => channel.name === "🎊-ᴡᴇʟᴄᴏᴍᴇ-🎊")
+    const channel = message.guild.channels.cache.find(channel => channel.name === "🎊-ᴡᴇʟᴄᴏᴍᴇ-🎊")
     if(!channel)return null;
     const mAdd = new Discord.MessageEmbed()
-    .setTitle(`${member.displayName} Benvenuto/a nel server!`)
-    .addField(':wave:', 'Ti invitiamo a leggere le #regole per evitare imprevisti!')
-    .addField(':robot:', 'Per utilizzare il nostro bot personale digita `g-help`')
-    .addField(':busts_in_silhouette:', `Grazie a te ora siamo in \`${member.guild.memberCount}\``)
-    .addField(':heartbeat:','Buona permanenza!')
-    .setColor(0x3F0477)
+    .setTitle(`Benvenuto/a nel server @${message.displayName} :id:  \`${message.id}\``)
+    .setDescription(`:wave:Ti invitiamo a leggere le #regole per evitare imprevisti!
+    \n:robot:Per utilizzare il nostro bot personale digita \`g-help\`
+    \n:busts_in_silhouette:Grazie a te ora siamo in \`#${message.guild.memberCount}\` membri!
+    \n:heartbeat:Buona permanenza!`)
+    .setThumbnail(message.guild.iconURL)
+    .setColor(message.displayHexColor)
     .setFooter('created by itzjojax')
     channel.send(mAdd)
 });
+
 
 bot.on('message', message=>{
 
@@ -203,6 +205,11 @@ bot.on('message', message=>{
 
         case 'cat':{
             cat(bot, message, args)
+
+        }break;
+
+        case 'weather':{
+            weather(bot, message, args)
 
         }break;
 
