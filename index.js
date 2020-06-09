@@ -54,6 +54,19 @@ bot.on('guildMemberAdd', message =>{
     channel.send(mAdd)
 });
 
+bot.on('guildMemberRemove', message =>{
+
+    const channel = message.guild.channels.cache.find(channel => channel.name === "🎊-ᴡᴇʟᴄᴏᴍᴇ-🎊")
+    if(!channel)return null;
+    const mLeave = new Discord.MessageEmbed()
+    .setTitle(`\`${message.displayName}\` ha lasciato il server`)
+    .setDescription(`Ora siamo solo in \`${message.guild.memberCount}\` \nCi mancherai... forse...`)
+    .setThumbnail(message.guild.iconURL)
+    .setColor(message.displayHexColor)
+    .setFooter('created by itzjojax')
+    channel.send(mLeave)
+})
+
 
 bot.on('message', message=>{
 
