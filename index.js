@@ -22,6 +22,7 @@ const meme = require('./COMMANDS/FUN/meme.js')
 const dog = require('./COMMANDS/FUN/dog.js')
 const cat = require('./COMMANDS/FUN/cat.js')
 const weather = require('./COMMANDS/USEFUL/weather.js')
+const coin = require('./COMMANDS/FUN/coin.js')
 
 let ops = {
     ownerID: ownerID,
@@ -231,6 +232,15 @@ bot.on('message', message=>{
             weather(bot, message, args)
 
         }break;
+
+        // case 'edo':{
+        //     message.channel.send('è nabbo', {tts: true})
+
+        // }break;
+
+        case 'coinflip':{
+            coin(bot, message, args)
+        }
 
         }
 
