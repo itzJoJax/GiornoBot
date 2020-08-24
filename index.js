@@ -23,6 +23,16 @@ const dog = require('./COMMANDS/FUN/dog.js')
 const cat = require('./COMMANDS/FUN/cat.js')
 const weather = require('./COMMANDS/USEFUL/weather.js')
 const coin = require('./COMMANDS/FUN/coin.js')
+const penis = require('./COMMANDS/FUN/penis.js');
+const zerotwo = require('./COMMANDS/FUN/zerotwo.js');
+const evangelion = require('./COMMANDS/FUN/evangelion.js')
+const ui = require('./COMMANDS/IMG_COMMANS/userinfo.js')
+const jail = require('./COMMANDS/IMG_COMMANS/jail.js');
+const brazzers = require('./COMMANDS/IMG_COMMANS/brazzers.js');
+const burn = require('./COMMANDS/IMG_COMMANS/burn.js');
+const worthless = require('./COMMANDS/IMG_COMMANS/worthless.js');
+const hug = require('./COMMANDS/IMG_COMMANS/hug.js');
+
 
 let ops = {
     ownerID: ownerID,
@@ -32,12 +42,13 @@ let ops = {
 
 bot.on('ready', () =>{
     console.log('Giorno GIovanna has joined the battle!');
-    bot.user.setActivity('by itzJoJax#8445',{
+    bot.user.setActivity(`${bot.guilds.cache.size} server!`,{
         status: "online",
-        type: "STREAMING",
-        url: 'https://www.twitch.tv/giornogiovannabot'
+        type: "WATCHING",
+        // url: 'https://www.twitch.tv/giornogiovannabot'
     });
 })
+
 
 bot.on('guildMemberAdd', message =>{
 
@@ -53,6 +64,7 @@ bot.on('guildMemberAdd', message =>{
     .setColor(message.displayHexColor)
     .setFooter('created by itzjojax')
     channel.send(mAdd)
+
 });
 
 bot.on('guildMemberRemove', message =>{
@@ -139,10 +151,9 @@ bot.on('message', message=>{
         break;
 
         case 'serverinfo':{
-            var gChannels = message.guild.channels;
-            console.log(gChannels.guild);
+            var gChannels = message.guild.channels.cache.size;
             const serverinfo = new Discord.MessageEmbed()
-            .setTitle('Server Info')
+            .setTitle(`${message.guild.name} | ${message.guild.id}`)
             .addField(':crown:Founder', message.guild.owner, true)
             .addField(':busts_in_silhouette:Members', message.guild.memberCount, true)
             .addField(':boom:Server Name', message.guild.name, true)
@@ -154,7 +165,7 @@ bot.on('message', message=>{
             message.channel.send(serverinfo)
         }break;
 
-        case 'mc':{
+        case 'mcPing':{
 
             if(!args[1])return message.channel.send('Insert a minecraft server IP')
             if(!args[2])return message.channel.send('Insert a minecraft server PORT')
@@ -233,14 +244,54 @@ bot.on('message', message=>{
 
         }break;
 
-        // case 'edo':{
-        //     message.channel.send('è nabbo', {tts: true})
+        case 'edo':{
+            message.channel.send('è nabbo', {tts: true})
 
-        // }break;
+        }break;
 
         case 'coinflip':{
             coin(bot, message, args)
-        }
+        }break;
+
+        case 'penis':{
+            penis(bot, message, args)
+        }break;
+
+        case 'zerotwo':{
+            zerotwo(bot, message, args)
+        }break;
+
+        case 'evangelion':{
+            evangelion(bot, message, args)
+        }break;
+
+        case 'test':{
+            console.log (message.channel.guild);
+        }break;
+
+        case 'ui':{
+            ui(bot, message, args)
+        }break;
+
+        case 'jail':{
+            jail(bot, message, args)
+        }break;
+
+        case 'brazzers':{
+            brazzers(bot, message, args)
+        }break;
+
+        case 'burn':{
+            burn(bot, message, args)
+        }break;
+
+        case 'worthless':{
+            worthless(bot, message, args)
+        }break;
+
+        case 'hug':{
+            hug(bot, message, args)
+        }break;
 
         }
 
