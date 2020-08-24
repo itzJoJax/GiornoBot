@@ -3,7 +3,6 @@ import { Client, Message } from "discord.js";
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const Canvas = require("canvas");
-const colors = require("../../colors.json");
 
 export default async (client: Client, message: Message, args: string[]) => {
     let user;
