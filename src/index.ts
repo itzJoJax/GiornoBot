@@ -35,6 +35,7 @@ import brazzers from "./COMMANDS/IMG_COMMANDS/brazzers";
 import burn from "./COMMANDS/IMG_COMMANDS/burn";
 import worthless from "./COMMANDS/IMG_COMMANDS/worthless";
 import hug from "./COMMANDS/IMG_COMMANDS/hug";
+import snap from "./COMMANDS/IMG_COMMANDS/snap";
 
 const ops = {
     ownerID: ownerID,
@@ -363,6 +364,11 @@ bot.on("message", (message: Message) => {
         case "hug":
             {
                 hug(bot, message, args);
+            }
+            break;
+        case "snap":
+            {
+                snap(bot, message, args);
             }
             break;
     }
