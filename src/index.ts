@@ -36,6 +36,7 @@ import burn from "./COMMANDS/IMG_COMMANDS/burn";
 import worthless from "./COMMANDS/IMG_COMMANDS/worthless";
 import hug from "./COMMANDS/IMG_COMMANDS/hug";
 import snap from "./COMMANDS/IMG_COMMANDS/snap";
+import sendUserInfo from "./COMMANDS/USEFUL/userinfo";
 
 const ops = {
     ownerID: ownerID,
@@ -99,16 +100,7 @@ bot.on("message", (message: Message) => {
 
     switch (args[0]) {
         case "userinfo":
-            const userinfo = new MessageEmbed()
-                .setTitle("User Information")
-                .addField("User Name", message.author.username, true)
-                .addField("User Rank", message.member?.roles.highest, true)
-                .addField("Server", message.guild.name, true)
-                .setColor(0x3f0477)
-                .setThumbnail(message.author.displayAvatarURL())
-                .setFooter("created by itzjojax");
-            message.channel.send(userinfo);
-            break;
+            return sendUserInfo(message);
 
         case "help":
             const help = new MessageEmbed()
@@ -248,129 +240,72 @@ bot.on("message", (message: Message) => {
         }
 
         case "ping":
-            {
-                message.channel.send(`Pong! The bot ping is ${bot.ws.ping}ms`);
-            }
-            break;
+            return message.channel.send(
+                `Pong! The bot ping is ${bot.ws.ping}ms`
+            );
 
         case "play":
-            {
-                play(
-                    bot,
-                    message,
-                    args
-                    // active,
-                    // ops
-                );
-            }
-            break;
+            return play(
+                bot,
+                message,
+                args
+                // active,
+                // ops
+            );
 
         case "leave":
-            {
-                leave(bot, message, args);
-            }
-            break;
+            return leave(bot, message, args);
 
         case "meme":
-            {
-                meme(bot, message, args);
-            }
-            break;
+            return meme(bot, message, args);
 
         case "dog":
-            {
-                dog(bot, message, args);
-            }
-            break;
+            return dog(bot, message, args);
 
         case "cat":
-            {
-                cat(bot, message, args);
-            }
-            break;
+            return cat(bot, message, args);
 
         case "weather":
-            {
-                weather(bot, message, args);
-            }
-            break;
+            return weather(bot, message, args);
 
         case "edo":
-            {
-                message.channel.send("è nabbo", { tts: true });
-            }
-            break;
+            return message.channel.send("è nabbo", { tts: true });
 
         case "coinflip":
-            {
-                coin(bot, message, args);
-            }
-            break;
+            return coin(bot, message, args);
 
         case "penis":
-            {
-                penis(bot, message, args);
-            }
-            break;
+            return penis(bot, message, args);
 
         case "zerotwo":
-            {
-                zerotwo(bot, message, args);
-            }
-            break;
+            return zerotwo(bot, message, args);
 
         case "evangelion":
-            {
-                evangelion(bot, message, args);
-            }
-            break;
+            return evangelion(bot, message, args);
 
         case "test":
-            {
-                console.log(message.guild);
-            }
-            break;
+            return console.log(message.guild);
 
         case "ui":
-            {
-                ui(bot, message, args);
-            }
-            break;
+            return ui(bot, message, args);
 
         case "jail":
-            {
-                jail(bot, message, args);
-            }
-            break;
+            return jail(bot, message, args);
 
         case "brazzers":
-            {
-                brazzers(bot, message, args);
-            }
-            break;
+            return brazzers(bot, message, args);
 
         case "burn":
-            {
-                burn(bot, message, args);
-            }
-            break;
+            return burn(bot, message, args);
 
         case "worthless":
-            {
-                worthless(bot, message, args);
-            }
-            break;
+            return worthless(bot, message, args);
 
         case "hug":
-            {
-                hug(bot, message, args);
-            }
-            break;
+            return hug(bot, message, args);
+
         case "snap":
-            {
-                snap(bot, message, args);
-            }
-            break;
+            return snap(bot, message, args);
     }
 });
 
