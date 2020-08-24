@@ -29,25 +29,25 @@ module.exports = (
 
         //Collect
         const filter = (m: any) =>
-            !isNaN(n.content) && m.content < videos.lenght + 1 && m.content > 0;
+            !isNaN(m.content) && m.content < videos.lenght + 1 && m.content > 0;
         //Accettare solo i numeri della lista
         const collector = message.channel.createMessageCollector(filter);
 
         //Aggiornare le variabili
         // Non funziona
-        collector.videos = videos;
+        // collector.videos = videos;
 
         //Listener
-        collector.once("collect", function (n) {
-            //play
-            const commandFile = require("./play.js");
-            // Non ho idea di cosa tu voglia fare ma questo codice fa paura
-            commandFile.run(
-                client,
-                message,
-                [this.videos[parseInt(m.content) - 1].url],
-                ops
-            );
-        });
+        // collector.once("collect", function (n) {
+        //     //play
+        //     const commandFile = require("./play.js");
+        //     // Non ho idea di cosa tu voglia fare ma questo codice fa paura
+        //     commandFile.run(
+        //         client,
+        //         message,
+        //         [this.videos[parseInt(m.content) - 1].url],
+        //         ops
+        //     );
+        // });
     });
 };
