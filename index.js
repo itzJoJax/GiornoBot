@@ -32,6 +32,7 @@ const brazzers = require('./COMMANDS/IMG_COMMANS/brazzers.js');
 const burn = require('./COMMANDS/IMG_COMMANS/burn.js');
 const worthless = require('./COMMANDS/IMG_COMMANS/worthless.js');
 const hug = require('./COMMANDS/IMG_COMMANS/hug.js');
+const snap = require('./COMMANDS/IMG_COMMANS/snap.js');
 
 
 let ops = {
@@ -291,6 +292,10 @@ bot.on('message', message=>{
 
         case 'hug':{
             hug(bot, message, args)
+        }break;
+
+        case 'snap':{
+            snap(bot, message, args)
         }break;
 
         }
