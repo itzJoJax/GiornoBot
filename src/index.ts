@@ -6,7 +6,7 @@ const ping = require("minecraft-server-util");
 
 import path from "path";
 import dotenv from "dotenv";
-dotenv.config({ path: path.resolve(process.cwd(), "env", ".env") });
+dotenv.config();
 
 const token = process.env.TOKEN;
 
@@ -37,6 +37,7 @@ import worthless from "./COMMANDS/IMG_COMMANDS/worthless";
 import hug from "./COMMANDS/IMG_COMMANDS/hug";
 import snap from "./COMMANDS/IMG_COMMANDS/snap";
 import sendUserInfo from "./COMMANDS/USEFUL/userinfo";
+import hangman from "./COMMANDS/FUN/hangman";
 
 const ops = {
     ownerID: ownerID,
@@ -92,6 +93,13 @@ bot.on("guildMemberRemove", guildMember => {
     const iconURL = guildMember.guild.iconURL();
     iconURL ? mLeave.setThumbnail(iconURL) : null;
     channel.send(mLeave);
+});
+
+bot.on('message', msg => {
+    if (msg.content.toLowerCase() === 'g-hangman'){
+        const newGames = new hangman()
+        newGames.newGame(msg);
+    }
 });
 
 bot.on("message", (message: Message) => {
